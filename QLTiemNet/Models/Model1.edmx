@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTiemNetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="TimeEnd" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ComputerId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime" />
+          <Property Name="TimeEnd" Type="datetime" />
+          <Property Name="TimeActive" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ComputerDetailId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="ComputerDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" />
+          <Property Name="Cpu" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Ram" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="HardDisk" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Graphic" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Monitor" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Scheduler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ComputerId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="TimeRemaining" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Bill__ComputerId__239E4DCF">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__StatusId__24927208">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__UserId__22AA2996">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__Comput__1A14E395">
+          <End Role="ComputerDetail" Type="Self.ComputerDetail" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComputerDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="ComputerDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__Status__1B0907CE">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__UserId__1920BF5C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__Compu__1ED998B2">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__Statu__1FCDBCEB">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__UserI__1DE57479">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTiemNetDBModelStoreContainer">
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerDetail" EntityType="Self.ComputerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scheduler" EntityType="Self.Scheduler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bill__ComputerId__239E4DCF" Association="Self.FK__Bill__ComputerId__239E4DCF">
+            <End Role="Computer" EntitySet="Computer" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__StatusId__24927208" Association="Self.FK__Bill__StatusId__24927208">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__UserId__22AA2996" Association="Self.FK__Bill__UserId__22AA2996">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__Comput__1A14E395" Association="Self.FK__Computer__Comput__1A14E395">
+            <End Role="ComputerDetail" EntitySet="ComputerDetail" />
+            <End Role="Computer" EntitySet="Computer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__Status__1B0907CE" Association="Self.FK__Computer__Status__1B0907CE">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Computer" EntitySet="Computer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__UserId__1920BF5C" Association="Self.FK__Computer__UserId__1920BF5C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Computer" EntitySet="Computer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__Compu__1ED998B2" Association="Self.FK__Scheduler__Compu__1ED998B2">
+            <End Role="Computer" EntitySet="Computer" />
+            <End Role="Scheduler" EntitySet="Scheduler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__Statu__1FCDBCEB" Association="Self.FK__Scheduler__Statu__1FCDBCEB">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Scheduler" EntitySet="Scheduler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__UserI__1DE57479" Association="Self.FK__Scheduler__UserI__1DE57479">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Scheduler" EntitySet="Scheduler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTiemNetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ComputerId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Computer" Relationship="Self.FK__Bill__ComputerId__239E4DCF" FromRole="Bill" ToRole="Computer" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Bill__StatusId__24927208" FromRole="Bill" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Bill__UserId__22AA2996" FromRole="Bill" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TimeStart" Type="DateTime" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="TimeActive" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ComputerDetailId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__ComputerId__239E4DCF" FromRole="Computer" ToRole="Bill" />
+          <NavigationProperty Name="ComputerDetail" Relationship="Self.FK__Computer__Comput__1A14E395" FromRole="Computer" ToRole="ComputerDetail" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Computer__Status__1B0907CE" FromRole="Computer" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Computer__UserId__1920BF5C" FromRole="Computer" ToRole="Users" />
+          <NavigationProperty Name="Schedulers" Relationship="Self.FK__Scheduler__Compu__1ED998B2" FromRole="Computer" ToRole="Scheduler" />
+        </EntityType>
+        <EntityType Name="ComputerDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Cpu" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ram" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HardDisk" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Graphic" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Monitor" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Computers" Relationship="Self.FK__Computer__Comput__1A14E395" FromRole="ComputerDetail" ToRole="Computer" />
+        </EntityType>
+        <EntityType Name="Scheduler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ComputerId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Computer" Relationship="Self.FK__Scheduler__Compu__1ED998B2" FromRole="Scheduler" ToRole="Computer" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Scheduler__Statu__1FCDBCEB" FromRole="Scheduler" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Scheduler__UserI__1DE57479" FromRole="Scheduler" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__StatusId__24927208" FromRole="Status" ToRole="Bill" />
+          <NavigationProperty Name="Computers" Relationship="Self.FK__Computer__Status__1B0907CE" FromRole="Status" ToRole="Computer" />
+          <NavigationProperty Name="Schedulers" Relationship="Self.FK__Scheduler__Statu__1FCDBCEB" FromRole="Status" ToRole="Scheduler" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TimeRemaining" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__UserId__22AA2996" FromRole="Users" ToRole="Bill" />
+          <NavigationProperty Name="Computers" Relationship="Self.FK__Computer__UserId__1920BF5C" FromRole="Users" ToRole="Computer" />
+          <NavigationProperty Name="Schedulers" Relationship="Self.FK__Scheduler__UserI__1DE57479" FromRole="Users" ToRole="Scheduler" />
+        </EntityType>
+        <Association Name="FK__Bill__ComputerId__239E4DCF">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__StatusId__24927208">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__UserId__22AA2996">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__Comput__1A14E395">
+          <End Role="ComputerDetail" Type="Self.ComputerDetail" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComputerDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="ComputerDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__Status__1B0907CE">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Computer__UserId__1920BF5C">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__Compu__1ED998B2">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__Statu__1FCDBCEB">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scheduler__UserI__1DE57479">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scheduler">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTiemNetDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="Computers" EntityType="Self.Computer" />
+          <EntitySet Name="ComputerDetails" EntityType="Self.ComputerDetail" />
+          <EntitySet Name="Schedulers" EntityType="Self.Scheduler" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Bill__ComputerId__239E4DCF" Association="Self.FK__Bill__ComputerId__239E4DCF">
+            <End Role="Computer" EntitySet="Computers" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__StatusId__24927208" Association="Self.FK__Bill__StatusId__24927208">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__UserId__22AA2996" Association="Self.FK__Bill__UserId__22AA2996">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__Comput__1A14E395" Association="Self.FK__Computer__Comput__1A14E395">
+            <End Role="ComputerDetail" EntitySet="ComputerDetails" />
+            <End Role="Computer" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__Status__1B0907CE" Association="Self.FK__Computer__Status__1B0907CE">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Computer" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Computer__UserId__1920BF5C" Association="Self.FK__Computer__UserId__1920BF5C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Computer" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__Compu__1ED998B2" Association="Self.FK__Scheduler__Compu__1ED998B2">
+            <End Role="Computer" EntitySet="Computers" />
+            <End Role="Scheduler" EntitySet="Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__Statu__1FCDBCEB" Association="Self.FK__Scheduler__Statu__1FCDBCEB">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Scheduler" EntitySet="Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scheduler__UserI__1DE57479" Association="Self.FK__Scheduler__UserI__1DE57479">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Scheduler" EntitySet="Schedulers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTiemNetDBModelStoreContainer" CdmEntityContainer="QLTiemNetDBEntities">
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Computers">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.Computer">
+              <MappingFragment StoreEntitySet="Computer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeActive" ColumnName="TimeActive" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ComputerDetailId" ColumnName="ComputerDetailId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerDetails">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.ComputerDetail">
+              <MappingFragment StoreEntitySet="ComputerDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cpu" ColumnName="Cpu" />
+                <ScalarProperty Name="Ram" ColumnName="Ram" />
+                <ScalarProperty Name="HardDisk" ColumnName="HardDisk" />
+                <ScalarProperty Name="Graphic" ColumnName="Graphic" />
+                <ScalarProperty Name="Monitor" ColumnName="Monitor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedulers">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.Scheduler">
+              <MappingFragment StoreEntitySet="Scheduler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QLTiemNetDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TimeRemaining" ColumnName="TimeRemaining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
