@@ -92,3 +92,4 @@ E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csproj.CoreCompileInputs.
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csproj.CopyComplete
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.pdb
+E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csprojResolveAssemblyReference.cache

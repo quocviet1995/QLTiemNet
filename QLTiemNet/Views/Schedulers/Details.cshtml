@@ -1,0 +1,54 @@
+﻿@model QLTiemNet.Models.Scheduler
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Page = " Detail Scheduler: " + Model.Id;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <h4>Scheduler</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Computer.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Computer.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Name)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>
