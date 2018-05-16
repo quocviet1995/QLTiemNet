@@ -441,12 +441,12 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginAdmin.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Status\Create.cshtml" />
     <Content Include="Views\Status\Delete.cshtml" />
     <Content Include="Views\Status\Details.cshtml" />
     <Content Include="Views\Status\Edit.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

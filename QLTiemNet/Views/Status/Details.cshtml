@@ -1,34 +1,32 @@
 ﻿@model QLTiemNet.Models.Status
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    ViewBag.Page = " Detail Status: " + Model.Id;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <h4>Status</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Status</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-    
-        </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+</div>
+
+
