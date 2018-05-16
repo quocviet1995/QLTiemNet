@@ -17,26 +17,35 @@ namespace QLTiemNet.Controllers
         // GET : Admin/Login
         public ActionResult Login()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.NameUser = nameUser;
+            }
             return View();
         }
 
         // POST: Admin/Login
         [HttpPost]
-        public JsonResult Login(String user, String password)
+        public JsonResult Login(String userName, String password)
         {
             try
             {
                 String Role = "admin";
-                var login = db.Users.Where(x => x.UserName.Equals(user) && x.Role == Role).FirstOrDefault();
+                var user = db.Users.Where(x => x.UserName.Equals(userName) && x.Role == Role).FirstOrDefault();
 
-                if (login == null)
+                if (user == null)
                 {
                     return Json(new { message = "Sai tên đăng nhập", error = 1 });
                 }
                 else
                 {
-                    if (login.Password == password)
+                    if (user.Password == password)
                     {
+                        Session.Add("UserId", user.Id) ;
+                        Session.Add("NameUser", user.Name);
                         return Json(new { message = "Đăng nhập thành công", error = 0 });
                     }
                     else {
@@ -52,6 +61,13 @@ namespace QLTiemNet.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId = userId;
+                ViewBag.NameUser = nameUser;
+            }
             return View();
         }
 

@@ -4,7 +4,7 @@ function LoginAdminService($http, $filter) {
 
     function login( user, password) {
         var parameter = {
-            user: user,
+            userName: user,
             password: password,
         };
 
