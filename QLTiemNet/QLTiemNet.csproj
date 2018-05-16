@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ComputerDetailsController.cs" />
+    <Compile Include="Controllers\ComputersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -459,6 +460,11 @@
     <Content Include="Views\ComputerDetails\Details.cshtml" />
     <Content Include="Views\ComputerDetails\Edit.cshtml" />
     <Content Include="Views\ComputerDetails\Index.cshtml" />
+    <Content Include="Views\Computers\Create.cshtml" />
+    <Content Include="Views\Computers\Delete.cshtml" />
+    <Content Include="Views\Computers\Details.cshtml" />
+    <Content Include="Views\Computers\Edit.cshtml" />
+    <Content Include="Views\Computers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
