@@ -38,7 +38,7 @@ namespace QLTiemNet.Controllers
 
                 if (user == null)
                 {
-                    return Json(new { message = "Sai tên đăng nhập", error = 1 });
+                    return Json(new { message = "Account does not exist!", error = 1 });
                 }
                 else
                 {
@@ -46,10 +46,10 @@ namespace QLTiemNet.Controllers
                     {
                         Session.Add("UserId", user.Id) ;
                         Session.Add("NameUser", user.Name);
-                        return Json(new { message = "Đăng nhập thành công", error = 0 });
+                        return Json(new { message = "Login successfully!", error = 0 });
                     }
                     else {
-                        return Json(new { message = "Sai mật khẩu đăng nhập", error = 1 });
+                        return Json(new { message = "Wrong password!", error = 1 });
                     }
                 } 
             }
