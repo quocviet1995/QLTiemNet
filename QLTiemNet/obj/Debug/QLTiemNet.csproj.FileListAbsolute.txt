@@ -183,6 +183,5 @@ D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\bin\System.Web.WebPages.xml
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\bin\System.Web.WebPages.Deployment.xml
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\bin\System.Web.WebPages.Razor.xml
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\bin\System.Web.Optimization.xml
-D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csprojResolveAssemblyReference.cache
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.dll
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.pdb
