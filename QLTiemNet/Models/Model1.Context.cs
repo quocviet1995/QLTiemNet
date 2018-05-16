@@ -12,6 +12,8 @@ namespace QLTiemNet.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QLTiemNetDBEntities : DbContext
     {
@@ -31,5 +33,18 @@ namespace QLTiemNet.Models
         public virtual DbSet<Scheduler> Schedulers { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual ObjectResult<login_admin_Result> login_admin(string user, string password)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<login_admin_Result>("login_admin", userParameter, passwordParameter);
+        }
     }
 }

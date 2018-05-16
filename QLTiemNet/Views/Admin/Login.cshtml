@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row" ng-controller="LoginAdminCtrl">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Đăng Nhập</h3>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="LoginAdmin()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tài khoản</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tài khoản" ng-model="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mật khẩu</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Nhập mật khẩu" ng-model="password">
+                    </div>
+                    <div class="col-md-4 col-md-offset-4">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

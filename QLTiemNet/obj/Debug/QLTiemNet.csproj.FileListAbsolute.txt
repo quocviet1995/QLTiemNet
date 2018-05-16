@@ -25,16 +25,12 @@ E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.AppContext.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Console.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Diagnostics.StackTrace.dll
-E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.FileSystem.dll
-E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.Pipes.AccessControl.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.Pipes.dll
-E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Reflection.Metadata.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.AccessControl.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Claims.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Principal.Windows.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Text.Encoding.CodePages.dll
@@ -92,4 +88,8 @@ E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csproj.CopyComplete
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.pdb
 E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Collections.Immutable.dll
+E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.FileSystem.dll
+E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Reflection.Metadata.dll
+E:\Source_Code\QLTiemNet\QLTiemNet\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csprojResolveAssemblyReference.cache

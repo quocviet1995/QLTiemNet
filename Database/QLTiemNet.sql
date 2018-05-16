@@ -11,16 +11,21 @@ create table Users
 	Name nvarchar(256) NOT NULL,
 	UserName varchar(256) NOT NULL,
 	Password varchar(256) NOT NULL,
-	TimeRemaining datetime NOT NULL,
+	TimeRemaining datetime  Default NULL,
+	Role varchar(256) NOT NULL,
 	PRIMARY KEY (Id)
 );
+
+go
 
 create table Status
 (
 	Id int NOT NULL IDENTITY,
 	Name nvarchar(256) NOT NULL,
 	PRIMARY KEY (Id)
-)
+);
+
+go
 
 create table ComputerDetail
 (
@@ -32,7 +37,9 @@ create table ComputerDetail
     Graphic varchar(256) NOT NULL,
     Monitor varchar(256) NOT NULL,
 	PRIMARY KEY (Id)
-)
+);
+
+go
 
 create table Computer
 (
@@ -48,7 +55,9 @@ create table Computer
 	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
 	FOREIGN KEY(ComputerDetailId) REFERENCES dbo.ComputerDetail(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
-)
+);
+
+go
 
 create table Scheduler
 (
@@ -61,7 +70,9 @@ create table Scheduler
 	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
 	FOREIGN KEY(ComputerId) REFERENCES dbo.Computer(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
-)
+);
+
+go
 
 create table Bill
 (
@@ -75,4 +86,4 @@ create table Bill
 	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
 	FOREIGN KEY(ComputerId) REFERENCES dbo.Computer(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
-) 
+);
