@@ -1,0 +1,70 @@
+﻿@model QLTiemNet.Models.ComputerDetail
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Page = "Details Computer Detail: " + Model.Id;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <h4>ComputerDetail</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cpu)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cpu)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ram)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Ram)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.HardDisk)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HardDisk)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Graphic)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Graphic)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Monitor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Monitor)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

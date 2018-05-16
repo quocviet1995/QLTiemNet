@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QLTiemNet.Models.ComputerDetail>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Page = "Computer Detail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cpu)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ram)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HardDisk)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Graphic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Monitor)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ram)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardDisk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Graphic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monitor)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+    }
+        </table>
+    </div>
+</div>
