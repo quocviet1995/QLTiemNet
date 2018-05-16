@@ -156,6 +156,7 @@
     <Compile Include="Controllers\SchedulersController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DTO\ComputerDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,8 +211,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="HandleScripts\Login.controller.js" />
+    <Content Include="HandleScripts\Home.Controller.js" />
+    <Content Include="HandleScripts\Login.Controller.js" />
     <Content Include="HandleScripts\Service\Angular.Service.js" />
+    <Content Include="HandleScripts\Service\Home.Service.js" />
     <Content Include="HandleScripts\Service\Login.Service.js" />
     <Content Include="LibaryTheme\data\flot-data.js" />
     <Content Include="LibaryTheme\data\morris-data.js" />
@@ -418,8 +421,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="HandleScripts\LoginAdmin.controller.js" />
-    <Content Include="HandleScripts\Service\LoginAdmin.service.js" />
+    <Content Include="HandleScripts\LoginAdmin.Controller.js" />
+    <Content Include="HandleScripts\Service\LoginAdmin.Service.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

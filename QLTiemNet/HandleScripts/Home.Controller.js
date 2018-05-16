@@ -1,4 +1,17 @@
-﻿app.controller("LoginCtrl", ['$scope', 'LoginService', '$interval', function ($scope, LoginService, $interval) {
+﻿app.controller("HomeCtrl", ['$scope', 'HomeService', '$interval', function ($scope, HomeService, $interval) {
+
+    $scope.init = function () {
+        $scope.status = 0;
+        HomeService.getAllComputer($scope.status).then(function (result) {
+            if (result != null) {
+                console.log(result);
+            }
+        })
+    }
+
+    $scope.init();
+
+
     $scope.Login = function () {
         var user = $scope.user;
         var password = $scope.password;
@@ -10,7 +23,7 @@
                         '',
                         'success'
                     )
-                    window.location.href = "../";
+                    window.location.href = "Index";
                 } else {
                     swal(
                         result.message,

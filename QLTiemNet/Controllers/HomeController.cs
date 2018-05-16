@@ -1,7 +1,10 @@
-﻿using QLTiemNet.Models;
+﻿using QLTiemNet.DTO;
+using QLTiemNet.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -85,6 +88,40 @@ namespace QLTiemNet.Controllers
             ViewBag.NameUser = null;
             ViewBag.TimeRemaining = null;
             return RedirectToAction("Index","Home");
+        }
+
+        //Get: Home/getAllComputer
+        [HttpPost]
+        public JsonResult getAllComputer( int status)
+        {
+            List<ComputerDTO> listComputer = new  List<ComputerDTO>();
+            if (status > 0) {
+                listComputer = (from n in db.Computers
+                                where n.StatusId == status
+                                select new ComputerDTO
+                                {
+                                    Id = n.Id,
+                                    Name = n.Name,
+                                    TimeStart = n.TimeStart,
+                                    TimeEnd = n.TimeEnd,
+                                    StatusId = n.StatusId,
+                                    UserId = n.UserId
+                                }).ToList();
+            }
+            else {
+                listComputer = (from n in db.Computers
+                                select new ComputerDTO
+                                {
+                                    Id = n.Id,
+                                    Name = n.Name,
+                                    TimeStart = n.TimeStart,
+                                    TimeEnd = n.TimeEnd,
+                                    StatusId = n.StatusId,
+                                    UserId = n.UserId
+                                }).ToList();
+            }
+
+            return Json(listComputer, JsonRequestBehavior.AllowGet);
         }
 
     }
