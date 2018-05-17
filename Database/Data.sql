@@ -1,12 +1,16 @@
 ﻿use QLTiemNetDB;
 go
 
-INSERT INTO Users (Name,UserName,Password,TimeRemaining,Role) VALUES
-('Admin','admin','admin',null,'admin'),
-('Cá sấu','casau','123456',null,'user'),
-('Chó con','chocon','123456',null,'user'),
-('Vịt lùn','vitlun','123456',null,'user'),
-('Gián biết bay','gianbietbay','123456',null,'user');
+INSERT INTO Role (Name) VALUES
+('admin'),
+('user');
+
+INSERT INTO [User] (Name,UserName,Password,TimeRemaining,RoleId) VALUES
+('Admin','admin','admin',null,'1'),
+('Cá sấu','casau','123456',null,'2'),
+('Chó con','chocon','123456',null,'2'),
+('Vịt lùn','vitlun','123456',null,'2'),
+('Gián biết bay','gianbietbay','123456',null,'2');
 
 INSERT INTO Status (Name) VALUES 
 ('Run'),

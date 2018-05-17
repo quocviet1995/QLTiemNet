@@ -5,15 +5,25 @@ go
 use QLTiemNetDB;
 go
 
-create table Users
+create table [Role]
+(
+	Id int NOT NULL IDENTITY,
+	Name nvarchar(256) NOT NULL,
+	PRIMARY KEY (Id)
+);
+
+go
+
+create table [User]
 (
 	Id int NOT NULL IDENTITY,
 	Name nvarchar(256) NOT NULL,
 	UserName varchar(256) NOT NULL,
 	Password varchar(256) NOT NULL,
-	TimeRemaining datetime  Default NULL,
-	Role varchar(256) NOT NULL,
-	PRIMARY KEY (Id)
+	TimeRemaining int  Default NULL,
+	RoleId int NOT NULL,
+	PRIMARY KEY (Id),
+	FOREIGN KEY(RoleId) REFERENCES dbo.[Role](Id),
 );
 
 go
@@ -47,12 +57,12 @@ create table Computer
 	Name varchar(256) NOT NULL,
 	TimeStart datetime Default NULL,
 	TimeEnd datetime Default NULL,
-	TimeActive datetime Default NULL,
+	TimeActive int Default NULL,
 	UserId int Default NULL,
 	ComputerDetailId int NOT NULL,
 	StatusId int NOT NULL,
 	PRIMARY KEY (Id),
-	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
+	FOREIGN KEY(UserId) REFERENCES dbo.[User](Id),
 	FOREIGN KEY(ComputerDetailId) REFERENCES dbo.ComputerDetail(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
 );
@@ -67,7 +77,7 @@ create table Scheduler
 	ComputerId int NOT NULL,
 	StatusId int NOT NULL,
 	PRIMARY KEY (Id),
-	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
+	FOREIGN KEY(UserId) REFERENCES dbo.[User](Id),
 	FOREIGN KEY(ComputerId) REFERENCES dbo.Computer(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
 );
@@ -83,7 +93,7 @@ create table Bill
 	ComputerId int NOT NULL,
 	StatusId int NOT NULL,
 	PRIMARY KEY (Id),
-	FOREIGN KEY(UserId) REFERENCES dbo.Users(Id),
+	FOREIGN KEY(UserId) REFERENCES dbo.[User](Id),
 	FOREIGN KEY(ComputerId) REFERENCES dbo.Computer(Id),
 	FOREIGN KEY(StatusId) REFERENCES dbo.Status(Id)
 );
