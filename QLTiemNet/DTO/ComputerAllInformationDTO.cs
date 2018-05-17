@@ -23,6 +23,7 @@ namespace QLTiemNet.DTO
         public string HardDisk { get; set; }
         public string Graphic { get; set; }
         public string Monitor { get; set; }
+        public string TimeActiveString { get; set; }
 
     }
 }

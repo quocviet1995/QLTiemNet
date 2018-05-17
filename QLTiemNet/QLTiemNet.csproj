@@ -155,6 +155,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SchedulersController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DTO\ComputerAllInformationDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
@@ -218,6 +219,8 @@
     <Content Include="HandleScripts\Service\Angular.Service.js" />
     <Content Include="HandleScripts\Service\Home.Service.js" />
     <Content Include="HandleScripts\Service\Login.Service.js" />
+    <Content Include="HandleScripts\Service\Tool.Service.js" />
+    <Content Include="HandleScripts\Tool.Controller.js" />
     <Content Include="LibaryTheme\data\flot-data.js" />
     <Content Include="LibaryTheme\data\morris-data.js" />
     <Content Include="LibaryTheme\dist\css\sb-admin-2.css" />
@@ -478,6 +481,8 @@
     <Content Include="Views\Schedulers\Details.cshtml" />
     <Content Include="Views\Schedulers\Edit.cshtml" />
     <Content Include="Views\Schedulers\Index.cshtml" />
+    <Content Include="Views\Tool\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

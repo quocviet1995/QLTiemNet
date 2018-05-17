@@ -1,0 +1,74 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTool.cshtml";
+}
+
+<div class="row" ng-controller="ToolCtrl">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tool</h3>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="UserRegisterComputer()">
+                    <div class="form-group">
+                        <select class="form-control" ng-model="userId">
+                            <option ng-repeat="value in AllComputerStatusEmpty" value="{{value.Id}}">{{value.Name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Account</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Account name" ng-model="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="password">
+                    </div>
+                    <div class="col-md-4 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">User & Computer Active</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Computer </th>
+                            <th>Time Active</th>
+                            <th>Time Start</th>
+                            <th>Time End</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in UserComputerActive">
+                            <td>{{x.UserName}}</td>
+                            <td>{{x.Name}}</td>
+                            <td>{{x.TimeActiveString}}</td>
+                            <td>{{x.TimeStart.slice(6,19) | date:"MM-dd-yyyy h:mm:ssa"}}</td>
+                            <td>{{x.TimeEnd.slice(6,19) | date:"MM-dd-yyyy h:mm::ssa"}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-primary" ng-click="UserLogoutComputer(x.Id,x.UserId)">Logout</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
