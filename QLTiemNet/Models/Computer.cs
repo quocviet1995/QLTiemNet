@@ -25,10 +25,10 @@ namespace QLTiemNet.Models
         public string Name { get; set; }
         public Nullable<System.DateTime> TimeStart { get; set; }
         public Nullable<System.DateTime> TimeEnd { get; set; }
-        public Nullable<System.DateTime> TimeActive { get; set; }
+        public int TimeActive { get; set; }
         public Nullable<int> UserId { get; set; }
-        public Nullable<int> ComputerDetailId { get; set; }
-        public Nullable<int> StatusId { get; set; }
+        public int ComputerDetailId { get; set; }
+        public int StatusId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

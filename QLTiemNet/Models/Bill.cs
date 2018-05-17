@@ -17,9 +17,9 @@ namespace QLTiemNet.Models
         public int Id { get; set; }
         public System.DateTime TimeStart { get; set; }
         public System.DateTime TimeEnd { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> ComputerId { get; set; }
-        public Nullable<int> StatusId { get; set; }
+        public int UserId { get; set; }
+        public int ComputerId { get; set; }
+        public int StatusId { get; set; }
     
         public virtual Computer Computer { get; set; }
         public virtual Status Status { get; set; }

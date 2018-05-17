@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using QLTiemNet.DTO;
 using QLTiemNet.Models;
 
 namespace QLTiemNet.Controllers
@@ -122,6 +123,54 @@ namespace QLTiemNet.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //GET: Users/getTimeRemaining
+        [HttpPost]
+        public JsonResult getTimeRemaining(int Id) {
+
+            User user = db.Users.Find(Id);
+            int TimeRemaining = user.TimeRemaining;
+
+            int? UserId = Id;
+            ComputerDTO listComputer = (from n in db.Computers
+                                        where n.UserId == UserId
+                                        select new ComputerDTO
+                                        {
+                                            TimeActive = n.TimeActive
+                                        }).FirstOrDefault();
+            if (listComputer != null) {
+                TimeRemaining = TimeRemaining - listComputer.TimeActive;
+            }
+            int hours = 0;
+            int minutes = 0;
+            int second = 0;
+            int temp = 0;
+
+            if (TimeRemaining > 0) {
+                if (TimeRemaining >= 60 * 60)
+                {
+                    hours = TimeRemaining / (60 * 60);
+                    temp = TimeRemaining % (60 * 60);
+                    if (temp >= 60)
+                    {
+                        minutes = temp / 60;
+                        second = temp % 60;
+                    }
+                    else
+                    {
+                        second = temp;
+                    }
+                }
+                else
+                {
+                    minutes = TimeRemaining / 60;
+                    second = TimeRemaining % 60;
+                }
+
+            }
+            string time = hours + "h " + minutes + "mm " + second + "ss";
+            return Json(time, JsonRequestBehavior.AllowGet);
         }
     }
 }

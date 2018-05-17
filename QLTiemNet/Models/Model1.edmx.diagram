@@ -4,22 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="84dcc1ddbc18472e9c2020063c7e4c86" Name="Diagram1">
-        <EntityTypeShape EntityType="QLTiemNetDBModel.Bill" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTiemNetDBModel.Computer" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="c6957555bb0a480b9fa1cb7a20b0c109" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTiemNetDBModel.Bill" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiemNetDBModel.Computer" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTiemNetDBModel.ComputerDetail" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTiemNetDBModel.Scheduler" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTiemNetDBModel.Status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiemNetDBModel.Role" Width="1.5" PointX="1.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiemNetDBModel.Scheduler" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiemNetDBModel.Status" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLTiemNetDBModel.User" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__ComputerId__24927208" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__StatusId__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__UserId__239E4DCF" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__Comput__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__Status__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__UserId__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__Compu__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__Statu__20C1E124" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__UserI__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__ComputerId__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__StatusId__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Bill__UserId__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__Comput__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__Status__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Computer__UserId__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__Compu__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__User__RoleId__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__Statu__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiemNetDBModel.FK__Scheduler__UserI__35BCFE0A" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

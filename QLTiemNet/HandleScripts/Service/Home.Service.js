@@ -19,13 +19,43 @@ function HomeService($http, $filter) {
             });
     }
 
-    function login(user, password) {
-        var parameter = {
-            userName: user,
-            password: password,
-        };
+    function getAllInformationComputer(Id, UserId) {
 
-        var request = $http.post('Login', parameter);
+        var parameter = {
+            Id: Id,
+            UserId: UserId
+        }
+
+        var request = $http.post('Home/getAllInformationComputer', parameter);
+
+        return request.then(function (response) {
+            return response.data;
+        },
+            function (err) {
+                console.log(err);
+                return err;
+            }); 
+    }
+
+    function getStatus() {
+
+        var request = $http.get('Home/getStatus');
+
+        return request.then(function (response) {
+            return response.data;
+        },
+            function (err) {
+                console.log(err);
+                return err;
+            }); 
+    }
+
+    function getTimeRemaining(Id) {
+
+        var parameter = {
+            Id:Id
+        }
+        var request = $http.post('Users/getTimeRemaining', parameter);
 
         return request.then(function (response) {
             return response.data;
@@ -37,7 +67,9 @@ function HomeService($http, $filter) {
     }
 
     return {
-        login: login,
-        getAllComputer: getAllComputer
+        getAllInformationComputer: getAllInformationComputer,
+        getAllComputer: getAllComputer,
+        getStatus: getStatus,
+        getTimeRemaining: getTimeRemaining
     }
 }

@@ -33,8 +33,8 @@ namespace QLTiemNet.Controllers
         {
             try
             {
-                String Role = "admin";
-                var user = db.Users.Where(x => x.UserName.Equals(userName) && x.Role == Role).FirstOrDefault();
+                ///RoleId = 1 as Admin
+                var user = db.Users.Where(x => x.UserName.Equals(userName) && x.RoleId == 1).FirstOrDefault();
 
                 if (user == null)
                 {

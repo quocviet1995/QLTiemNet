@@ -35,9 +35,8 @@ namespace QLTiemNet.Controllers
         {
             try
             {
-                String RoleUser = "user";
-                String RoleAdmin = "admin";
-                var user = db.Users.Where(x => x.UserName.Equals(userName) && x.Role == RoleAdmin || x.Role == RoleUser ).FirstOrDefault();
+                ///RoleId = 1 as Admin, 2 as User
+                var user = db.Users.Where(x => x.UserName.Equals(userName) && x.RoleId == 1 || x.RoleId == 2 ).FirstOrDefault();
 
                 if (user == null)
                 {
@@ -75,7 +74,7 @@ namespace QLTiemNet.Controllers
                 ViewBag.NameUser = nameUser;
                 ViewBag.TimeRemaining = timeRemaining;
             }
-            return View();
+            return View(db.Status.ToList());
         }
 
         //GET : Home/Logout
@@ -124,5 +123,80 @@ namespace QLTiemNet.Controllers
             return Json(listComputer, JsonRequestBehavior.AllowGet);
         }
 
+        //Get : Home/getAllInformationComputer
+        [HttpPost]
+        public JsonResult getAllInformationComputer(int Id, int? UserId)
+        {
+            List<ComputerAllInformationDTO> computerAllInformation = new List<ComputerAllInformationDTO>();
+
+            if (UserId != null)
+            {
+                computerAllInformation = (from c in db.Computers
+                                          join u in db.Users on c.UserId equals u.Id
+                                          join cd in db.ComputerDetails on c.ComputerDetailId equals cd.Id
+                                          join s in db.Status on c.StatusId equals s.Id
+                                          where c.Id == Id
+                                          select new ComputerAllInformationDTO
+                                          {
+                                              Id = c.Id,
+                                              Name = c.Name,
+                                              TimeStart = c.TimeStart,
+                                              TimeEnd = c.TimeEnd,
+                                              TimeActive = c.TimeActive,
+                                              UserId = c.UserId,
+                                              UserName = u.UserName,
+                                              ComputerDetailId = c.ComputerDetailId,
+                                              StatusId = c.StatusId,
+                                              StatusName = s.Name,
+                                              ComputerDetailName = cd.Name,
+                                              Cpu = cd.Cpu,
+                                              Ram = cd.Ram,
+                                              HardDisk = cd.HardDisk,
+                                              Graphic = cd.Graphic,
+                                              Monitor = cd.Monitor
+                                          }).ToList();
+            }
+            else {
+                computerAllInformation = (from c in db.Computers
+                                          join cd in db.ComputerDetails on c.ComputerDetailId equals cd.Id
+                                          join s in db.Status on c.StatusId equals s.Id
+                                          where c.Id == Id
+                                          select new ComputerAllInformationDTO
+                                          {
+                                              Id = c.Id,
+                                              Name = c.Name,
+                                              TimeStart = c.TimeStart,
+                                              TimeEnd = c.TimeEnd,
+                                              TimeActive = c.TimeActive,
+                                              UserId = c.UserId,
+                                              ComputerDetailId = c.ComputerDetailId,
+                                              StatusId = c.StatusId,
+                                              StatusName = s.Name,
+                                              ComputerDetailName = cd.Name,
+                                              Cpu = cd.Cpu,
+                                              Ram = cd.Ram,
+                                              HardDisk = cd.HardDisk,
+                                              Graphic = cd.Graphic,
+                                              Monitor = cd.Monitor
+                                          }).ToList();
+            }
+
+
+            return Json(computerAllInformation, JsonRequestBehavior.AllowGet);
+        }
+
+        //Get :Home/getStatus
+        [HttpGet]
+        public JsonResult getStatus()
+        {
+            List<StatusDTO> listStatus = new List<StatusDTO>();
+
+            listStatus = (from n in db.Status
+                          select new StatusDTO {
+                              Id = n.Id,
+                              Name = n.Name
+                          }).ToList();
+            return Json(listStatus, JsonRequestBehavior.AllowGet);
+        }
     }
 }
