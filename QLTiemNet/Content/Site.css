@@ -34,6 +34,13 @@ a:hover, a.active
 .page-header{
     margin: 40px 0 0;
 }
+.login-text{
+    color:#ffffff;
+}
+.login-text:hover {
+    background-color:unset;
+    color:#ffffff;
+}
 @media (min-width: 1200px){
     .container{
         width:unset!important;

@@ -185,3 +185,4 @@ D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\bin\System.Web.Optimization.xml
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.dll
 D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.pdb
 E:\Source_Code\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csproj.CopyComplete
+D:\XAMPP\htdocs\QLTiemNet\QLTiemNet\obj\Debug\QLTiemNet.csprojResolveAssemblyReference.cache
