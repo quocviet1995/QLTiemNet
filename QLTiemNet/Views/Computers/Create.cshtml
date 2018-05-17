@@ -11,7 +11,9 @@
         @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
+            <div>
+                <i style="color:#337ab7" class="fa fa-chevron-circle-left"></i> @Html.ActionLink("Back to List", "Index")
+            </div>
         <div class="form-horizontal">
             <h4>Computer</h4>
             <hr />
@@ -80,8 +82,5 @@
         </div>
 }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
     </div>
 </div>2>

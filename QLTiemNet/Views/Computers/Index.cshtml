@@ -7,9 +7,9 @@
 }
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <p>
-            @Html.ActionLink("Create New", "Create")
+            <i style="color:#337ab7" class="fa fa-plus-circle"></i> @Html.ActionLink("Create New", "Create")
         </p>
         <table class="table">
             <tr>
@@ -61,7 +61,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.User.Name)
                 </td>
-                <td>
+                <td >
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })

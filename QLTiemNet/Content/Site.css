@@ -1,6 +1,5 @@
 ﻿body {
     padding-top: 30px;
-    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -17,16 +16,26 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+
 select,
 textarea {
     max-width: 280px;
 }
 a {
-    color:#ffffff;
+    color:#337ab7;
 }
 a:hover, a.active
 {
     color:#337ab7;
 }
-
+.sidebar-text{
+    color:#ffffff;
+}
+.page-header{
+    margin: 40px 0 0;
+}
+@media (min-width: 1200px){
+    .container{
+        width:unset!important;
+    }
+}
