@@ -16,7 +16,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="TimeStart" Type="datetime" />
     <Property Name="TimeEnd" Type="datetime" />
     <Property Name="TimeActive" Type="int" Nullable="false" />
@@ -71,7 +71,7 @@
     <Property Name="TimeRemaining" Type="int" Nullable="false" />
     <Property Name="RoleId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Bill__ComputerId__3B75D760">
+  <Association Name="FK__Bill__ComputerId__29572725">
     <End Role="Computer" Type="Self.Computer" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -83,7 +83,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__StatusId__3C69FB99">
+  <Association Name="FK__Bill__StatusId__2A4B4B5E">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -95,7 +95,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__UserId__3A81B327">
+  <Association Name="FK__Bill__UserId__286302EC">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -107,7 +107,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Computer__Comput__31EC6D26">
+  <Association Name="FK__Computer__Comput__1FCDBCEB">
     <End Role="ComputerDetail" Type="Self.ComputerDetail" Multiplicity="1" />
     <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -119,7 +119,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Computer__Status__32E0915F">
+  <Association Name="FK__Computer__Status__20C1E124">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,7 +131,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Computer__UserId__30F848ED">
+  <Association Name="FK__Computer__UserId__1ED998B2">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +143,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scheduler__Compu__36B12243">
+  <Association Name="FK__Scheduler__Compu__24927208">
     <End Role="Computer" Type="Self.Computer" Multiplicity="1" />
     <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
     <ReferentialConstraint>
@@ -155,7 +155,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scheduler__Statu__37A5467C">
+  <Association Name="FK__Scheduler__Statu__25869641">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
     <ReferentialConstraint>
@@ -167,7 +167,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Scheduler__UserI__35BCFE0A">
+  <Association Name="FK__Scheduler__UserI__239E4DCF">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Scheduler" Type="Self.Scheduler" Multiplicity="*" />
     <ReferentialConstraint>
@@ -179,7 +179,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__User__RoleId__267ABA7A">
+  <Association Name="FK__User__RoleId__145C0A3F">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
     <ReferentialConstraint>
@@ -199,43 +199,43 @@
     <EntitySet Name="Scheduler" EntityType="Self.Scheduler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Bill__ComputerId__3B75D760" Association="Self.FK__Bill__ComputerId__3B75D760">
+    <AssociationSet Name="FK__Bill__ComputerId__29572725" Association="Self.FK__Bill__ComputerId__29572725">
       <End Role="Computer" EntitySet="Computer" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__StatusId__3C69FB99" Association="Self.FK__Bill__StatusId__3C69FB99">
+    <AssociationSet Name="FK__Bill__StatusId__2A4B4B5E" Association="Self.FK__Bill__StatusId__2A4B4B5E">
       <End Role="Status" EntitySet="Status" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__UserId__3A81B327" Association="Self.FK__Bill__UserId__3A81B327">
+    <AssociationSet Name="FK__Bill__UserId__286302EC" Association="Self.FK__Bill__UserId__286302EC">
       <End Role="User" EntitySet="User" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Computer__Comput__31EC6D26" Association="Self.FK__Computer__Comput__31EC6D26">
+    <AssociationSet Name="FK__Computer__Comput__1FCDBCEB" Association="Self.FK__Computer__Comput__1FCDBCEB">
       <End Role="ComputerDetail" EntitySet="ComputerDetail" />
       <End Role="Computer" EntitySet="Computer" />
     </AssociationSet>
-    <AssociationSet Name="FK__Computer__Status__32E0915F" Association="Self.FK__Computer__Status__32E0915F">
+    <AssociationSet Name="FK__Computer__Status__20C1E124" Association="Self.FK__Computer__Status__20C1E124">
       <End Role="Status" EntitySet="Status" />
       <End Role="Computer" EntitySet="Computer" />
     </AssociationSet>
-    <AssociationSet Name="FK__Computer__UserId__30F848ED" Association="Self.FK__Computer__UserId__30F848ED">
+    <AssociationSet Name="FK__Computer__UserId__1ED998B2" Association="Self.FK__Computer__UserId__1ED998B2">
       <End Role="User" EntitySet="User" />
       <End Role="Computer" EntitySet="Computer" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scheduler__Compu__36B12243" Association="Self.FK__Scheduler__Compu__36B12243">
+    <AssociationSet Name="FK__Scheduler__Compu__24927208" Association="Self.FK__Scheduler__Compu__24927208">
       <End Role="Computer" EntitySet="Computer" />
       <End Role="Scheduler" EntitySet="Scheduler" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scheduler__Statu__37A5467C" Association="Self.FK__Scheduler__Statu__37A5467C">
+    <AssociationSet Name="FK__Scheduler__Statu__25869641" Association="Self.FK__Scheduler__Statu__25869641">
       <End Role="Status" EntitySet="Status" />
       <End Role="Scheduler" EntitySet="Scheduler" />
     </AssociationSet>
-    <AssociationSet Name="FK__Scheduler__UserI__35BCFE0A" Association="Self.FK__Scheduler__UserI__35BCFE0A">
+    <AssociationSet Name="FK__Scheduler__UserI__239E4DCF" Association="Self.FK__Scheduler__UserI__239E4DCF">
       <End Role="User" EntitySet="User" />
       <End Role="Scheduler" EntitySet="Scheduler" />
     </AssociationSet>
-    <AssociationSet Name="FK__User__RoleId__267ABA7A" Association="Self.FK__User__RoleId__267ABA7A">
+    <AssociationSet Name="FK__User__RoleId__145C0A3F" Association="Self.FK__User__RoleId__145C0A3F">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>

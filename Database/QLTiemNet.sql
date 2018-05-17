@@ -18,7 +18,7 @@ create table [User]
 (
 	Id int NOT NULL IDENTITY,
 	Name nvarchar(256) NOT NULL,
-	UserName varchar(256) NOT NULL,
+	UserName varchar(256) NOT NULL UNIQUE,
 	Password varchar(256) NOT NULL,
 	TimeRemaining int  Default 0 NOT NULL,
 	RoleId int NOT NULL,
@@ -54,7 +54,7 @@ go
 create table Computer
 (
 	Id int NOT NULL IDENTITY,
-	Name varchar(256) NOT NULL,
+	Name nvarchar(256) NOT NULL,
 	TimeStart datetime Default NULL,
 	TimeEnd datetime Default NULL,
 	TimeActive int Default 0 NOT NULL,
