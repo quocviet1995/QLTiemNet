@@ -11,13 +11,18 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Scheduler
     {
+        [DisplayName("Scheduler")]
         public int Id { get; set; }
         public System.DateTime Time { get; set; }
+        [DisplayName("User")]
         public int UserId { get; set; }
+        [DisplayName("Computer")]
         public int ComputerId { get; set; }
+        [DisplayName("Status")]
         public int StatusId { get; set; }
     
         public virtual Computer Computer { get; set; }

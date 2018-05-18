@@ -11,7 +11,8 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +22,18 @@ namespace QLTiemNet.Models
             this.Computers = new HashSet<Computer>();
             this.Schedulers = new HashSet<Scheduler>();
         }
-    
+
+        [DisplayName("User")]
         public int Id { get; set; }
+        [DisplayName("Full Name")]
         public string Name { get; set; }
+        [DisplayName("Username")]
         public string UserName { get; set; }
+        [DisplayName("Password")]
         public string Password { get; set; }
+        [DisplayName("Time Remaining")]
         public int TimeRemaining { get; set; }
+        [DisplayName("Role")]
         public int RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

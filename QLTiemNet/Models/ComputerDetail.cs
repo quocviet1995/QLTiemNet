@@ -11,7 +11,8 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class ComputerDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,13 @@ namespace QLTiemNet.Models
         {
             this.Computers = new HashSet<Computer>();
         }
-    
+
+        [DisplayName("Computer Detail")]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Cpu { get; set; }
         public string Ram { get; set; }
+        [DisplayName("Hard Disk")]
         public string HardDisk { get; set; }
         public string Graphic { get; set; }
         public string Monitor { get; set; }

@@ -11,7 +11,8 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace QLTiemNet.Models
         {
             this.Users = new HashSet<User>();
         }
-    
+        [DisplayName("Role")]
         public int Id { get; set; }
         public string Name { get; set; }
     

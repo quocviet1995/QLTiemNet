@@ -11,14 +11,21 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Bill
     {
+        [DisplayName("Bill")]
         public int Id { get; set; }
+        [DisplayName("Time Start")]
         public System.DateTime TimeStart { get; set; }
+        [DisplayName("Time End")]
         public System.DateTime TimeEnd { get; set; }
+        [DisplayName("User")]
         public int UserId { get; set; }
+        [DisplayName("Computer")]
         public int ComputerId { get; set; }
+        [DisplayName("Status")]
         public int StatusId { get; set; }
     
         public virtual Computer Computer { get; set; }

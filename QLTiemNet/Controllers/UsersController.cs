@@ -60,6 +60,7 @@ namespace QLTiemNet.Controllers
                 ViewBag.UserId_Session = userId;
                 ViewBag.NameUser_Session = nameUser;
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View();
         }
 
@@ -68,7 +69,7 @@ namespace QLTiemNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,UserName,Password,TimeRemaining,Role")] User user)
+        public ActionResult Create([Bind(Include = "Id,Name,UserName,Password,TimeRemaining,RoleId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +77,7 @@ namespace QLTiemNet.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View(user);
         }
 
@@ -99,6 +100,7 @@ namespace QLTiemNet.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View(user);
         }
 
@@ -107,7 +109,7 @@ namespace QLTiemNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,UserName,Password,TimeRemaining,Role")] User user)
+        public ActionResult Edit([Bind(Include = "Id,Name,UserName,Password,TimeRemaining,RoleId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -115,6 +117,7 @@ namespace QLTiemNet.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View(user);
         }
 

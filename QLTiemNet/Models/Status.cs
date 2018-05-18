@@ -11,7 +11,8 @@ namespace QLTiemNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,8 @@ namespace QLTiemNet.Models
             this.Computers = new HashSet<Computer>();
             this.Schedulers = new HashSet<Scheduler>();
         }
-    
+
+        [DisplayName("Status")]
         public int Id { get; set; }
         public string Name { get; set; }
     

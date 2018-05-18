@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.TimeRemaining)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Role)
+                    @Html.DisplayFor(modelItem => item.Role.Name)
                 </td>
                 <td style="float:right">
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
