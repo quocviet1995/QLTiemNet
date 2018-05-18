@@ -18,12 +18,26 @@ namespace QLTiemNet.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +53,13 @@ namespace QLTiemNet.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             return View();
         }
 
@@ -62,6 +83,13 @@ namespace QLTiemNet.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -93,6 +121,13 @@ namespace QLTiemNet.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

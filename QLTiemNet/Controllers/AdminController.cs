@@ -21,8 +21,8 @@ namespace QLTiemNet.Controllers
             var nameUser = Session["NameUser"];
             if (userId != null && nameUser != null)
             {
-                ViewBag.UserId = userId;
-                ViewBag.NameUser = nameUser;
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
             }
             return View();
         }
@@ -58,6 +58,16 @@ namespace QLTiemNet.Controllers
                 return Json(new { message = "Login fail", error = 1 });
             }
         }
+
+        //GET : Admin/Logout
+        public ActionResult Logout()
+        {
+            Session.Remove("UserId");
+            Session.Remove("NameUser");
+            ViewBag.UserId_Session = null;
+            ViewBag.NameUser_Session = null;
+            return RedirectToAction("Login", "Admin");
+        }
         // GET: Admin
         public ActionResult Index()
         {
@@ -65,8 +75,8 @@ namespace QLTiemNet.Controllers
             var nameUser = Session["NameUser"];
             if (userId != null && nameUser != null)
             {
-                ViewBag.UserId = userId;
-                ViewBag.NameUser = nameUser;
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
             }
             return View();
         }

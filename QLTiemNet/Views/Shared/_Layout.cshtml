@@ -29,7 +29,7 @@
 <body ng-app="myApp">
     <div id="wrapper" ng-controller="HomeCtrl">
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color:#e62020; border-color:#e62020">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color:#87cefa; border-color:#87cefa">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -90,9 +90,9 @@
                                 <p>Name: <span ng-cloak>{{computerInformation.Name}}</span></p>
                                 <p>Status: <span ng-cloak>{{computerInformation.StatusName}}</span></p>
                                 <p>User: <span ng-cloak>{{computerInformation.UserName}}</span></p>
-                                <p>Time Active: <span ng-cloak>{{computerInformation.TimeActive}}</span></p>
-                                <p>Time Start: <span ng-cloak>{{computerInformation.TimeStart}}</span></p>
-                                <p>Time End: <span ng-cloak>{{computerInformation.TimeEnd}}</span></p>
+                                <p>Time Active: <span ng-cloak>{{computerInformation.TimeActiveString}}</span></p>
+                                <p>Time Start: <span ng-cloak>{{computerInformation.TimeStart.slice(6,19) | date:"MM-dd-yyyy h:mm:ssa"}}</span></p>
+                                <p>Time End: <span ng-cloak>{{computerInformation.TimeEnd.slice(6,19) | date:"MM-dd-yyyy h:mm:ssa"}}</span></p>
                                 <p>CPU: <span ng-cloak>{{computerInformation.Cpu}}</span></p>
                                 <p>RAM: <span ng-cloak>{{computerInformation.Ram}}</span></p>
                                 <p>Hard Disk: <span ng-cloak>{{computerInformation.HardDisk}}</span></p>

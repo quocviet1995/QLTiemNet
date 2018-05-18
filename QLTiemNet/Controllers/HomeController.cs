@@ -180,9 +180,13 @@ namespace QLTiemNet.Controllers
                                               Monitor = cd.Monitor
                                           }).ToList();
             }
-
-
-            return Json(computerAllInformation, JsonRequestBehavior.AllowGet);
+            List<ComputerAllInformationDTO> listresult = new List<ComputerAllInformationDTO>();
+            foreach (ComputerAllInformationDTO s in computerAllInformation)
+            {
+                s.TimeActiveString = ConvertIntTimeToString(s.TimeActive);
+                listresult.Add(s);
+            }
+            return Json(listresult, JsonRequestBehavior.AllowGet);
         }
 
         //Get :Home/getStatus
@@ -197,6 +201,40 @@ namespace QLTiemNet.Controllers
                               Name = n.Name
                           }).ToList();
             return Json(listStatus, JsonRequestBehavior.AllowGet);
+        }
+
+        private String ConvertIntTimeToString(int time)
+        {
+            int hours = 0;
+            int minutes = 0;
+            int second = 0;
+            int temp = 0;
+
+            if (time > 0)
+            {
+                if (time >= 60 * 60)
+                {
+                    hours = time / (60 * 60);
+                    temp = time % (60 * 60);
+                    if (temp >= 60)
+                    {
+                        minutes = temp / 60;
+                        second = temp % 60;
+                    }
+                    else
+                    {
+                        second = temp;
+                    }
+                }
+                else
+                {
+                    minutes = time / 60;
+                    second = time % 60;
+                }
+
+            }
+            string result = hours + "h " + minutes + "mm " + second + "ss";
+            return result;
         }
     }
 }

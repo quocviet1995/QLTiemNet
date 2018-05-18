@@ -17,6 +17,13 @@ namespace QLTiemNet.Controllers
         // GET: Computers
         public ActionResult Index()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             var computers = db.Computers.Include(c => c.ComputerDetail).Include(c => c.Status).Include(c => c.User);
             return View(computers.ToList());
         }
@@ -24,6 +31,13 @@ namespace QLTiemNet.Controllers
         // GET: Computers/Details/5
         public ActionResult Details(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +53,13 @@ namespace QLTiemNet.Controllers
         // GET: Computers/Create
         public ActionResult Create()
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             ViewBag.ComputerDetailId = new SelectList(db.ComputerDetails, "Id", "Name");
             ViewBag.StatusId = new SelectList(db.Status, "Id", "Name");
             ViewBag.UserId = new SelectList(db.Users, "Id", "Name");
@@ -68,6 +89,13 @@ namespace QLTiemNet.Controllers
         // GET: Computers/Edit/5
         public ActionResult Edit(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -105,6 +133,13 @@ namespace QLTiemNet.Controllers
         // GET: Computers/Delete/5
         public ActionResult Delete(int? id)
         {
+            var userId = Session["UserId"];
+            var nameUser = Session["NameUser"];
+            if (userId != null && nameUser != null)
+            {
+                ViewBag.UserId_Session = userId;
+                ViewBag.NameUser_Session = nameUser;
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
