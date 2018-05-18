@@ -2,7 +2,7 @@
 
     $scope.AllComputerStatusEmpty = [];
     $scope.UserComputerActive = [];
-    $scope.userId = -1;
+    $scope.userId ="0";
 
     $scope.getAllComputerStatusEmpty = function () {
 

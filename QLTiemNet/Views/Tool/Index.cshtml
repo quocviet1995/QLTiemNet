@@ -14,7 +14,9 @@
             <div class="panel-body">
                 <form ng-submit="UserRegisterComputer()">
                     <div class="form-group">
+                        <a href="~/Views/Tool/Index.cshtml"></a>
                         <select class="form-control" ng-model="userId">
+                            <option value="0" selected>Choose Computer</option>
                             <option ng-repeat="value in AllComputerStatusEmpty" value="{{value.Id}}">{{value.Name}}</option>
                         </select>
                     </div>

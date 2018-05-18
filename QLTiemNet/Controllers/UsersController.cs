@@ -73,6 +73,7 @@ namespace QLTiemNet.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.TimeRemaining = ChangeMoneytoTime(user.TimeRemaining, 5000);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -111,14 +112,25 @@ namespace QLTiemNet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,UserName,Password,TimeRemaining,RoleId")] User user)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
+            int timeMaining_Old = GetTimeMainingOld(user.Id);
+            //if (ModelState.IsValid)
+            //{
+                //db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+
+                User user2 = db.Users.Find(user.Id);
+                int timeMaining = user2.TimeRemaining;
+                user2.TimeRemaining = ChangeMoneytoTime(timeMaining, 5000) + timeMaining_Old ;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
-            return View(user);
+            //}
+            //ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
+            //return View(user);
+        }
+        private int GetTimeMainingOld(int Id) {
+            User users = db.Users.Find(Id);
+            int time = users.TimeRemaining;
+            return time;
         }
 
         // GET: Users/Delete/5
@@ -209,6 +221,65 @@ namespace QLTiemNet.Controllers
             }
             string time = hours + "h " + minutes + "mm " + second + "ss";
             return Json(time, JsonRequestBehavior.AllowGet);
+        }
+
+        private int ChangeMoneytoTime(int money, int moneyOneHours)
+        {
+            int hours = 0;
+            int minutes = 0;
+            int second = 0;
+            int temp = 0;
+
+            if (money > 0)
+            {
+                if (money >= moneyOneHours)
+                {
+                    hours = money / moneyOneHours;
+                    temp = money % moneyOneHours;
+                    if (temp > (moneyOneHours / 60))
+                    {
+                        minutes = temp / (moneyOneHours / 60);
+                        temp = temp % (moneyOneHours / 60);
+                        if (temp > (moneyOneHours / (60 * 60)))
+                        {
+                            second = temp / (moneyOneHours / (60 * 60));
+                        }
+                        else
+                        {
+                            second = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (temp > (moneyOneHours / (60 * 60)))
+                        {
+                            second = temp / (moneyOneHours / (60 * 60));
+                        }
+                        else
+                        {
+                            second = 0;
+                        }
+                    }
+                }
+                else
+                {
+                    if (temp > (moneyOneHours / 60))
+                    {
+                        minutes = temp / (moneyOneHours / 60);
+                        temp = temp % (moneyOneHours / 60);
+                        if (temp > (moneyOneHours / (60 * 60)))
+                        {
+                            second = temp / (moneyOneHours / (60 * 60));
+                        }
+                        else
+                        {
+                            second = 0;
+                        }
+                    }
+                }
+            }
+            int time = (hours * 60 * 60) + (minutes * 60) + second;
+            return time;
         }
     }
 }
